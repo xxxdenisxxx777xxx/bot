@@ -1,4 +1,3 @@
-// src/UserInfo.js
 import React, { useEffect, useState } from "react";
 
 const UserInfo = () => {
@@ -10,10 +9,11 @@ const UserInfo = () => {
             // Проверяем, доступен ли Telegram Web Apps
             if (window.Telegram && window.Telegram.WebApp) {
                 // Получаем данные инициализации
-                const initData = window.Telegram.WebApp.initDataUnsafe;
+                const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
+                console.log(initDataUnsafe); // Добавлено для проверки
 
                 // Проверяем, есть ли данные о пользователе
-                const user = initData.user;
+                const user = initDataUnsafe.user;
 
                 if (user) {
                     setUserInfo(user);
