@@ -8,9 +8,12 @@ const UserInfo = () => {
     useEffect(() => {
         const getUserData = () => {
             // Проверяем, доступен ли Telegram Web Apps
-            if (window.Telegram) {
-                // Получаем информацию о пользователе
-                const user = window.Telegram.WebApp.initDataUnsafe.user;
+            if (window.Telegram && window.Telegram.WebApp) {
+                // Получаем данные инициализации
+                const initData = window.Telegram.WebApp.initDataUnsafe;
+
+                // Проверяем, есть ли данные о пользователе
+                const user = initData.user;
 
                 if (user) {
                     setUserInfo(user);
